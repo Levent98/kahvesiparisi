@@ -1,0 +1,33 @@
+Kahvesiparisi UML
+
+class Coffee {
+  - name: string
+  - price: int
+  - ingredients: map<string,int>
+  + getName(): string
+  + getPrice(): int
+  + getIngredients(): map<string,int>
+}
+
+class CoffeeMenu {
+  - coffees: map<int,Coffee>
+  + getInstance(): CoffeeMenu&
+  + displayMenu(): void
+  + getCoffeeById(id: int): Coffee
+  + getMenuSize(): size_t
+  - CoffeeMenu()
+}
+
+class CoffeeOrderService {
+  - menu: CoffeeMenu&
+  + startOrderProcess(): void
+  - getSelectedCoffee(): Coffee
+  - validateInput(input: string): bool
+  - prepareAndServe(coffee: Coffee): void
+}
+
+class CoffeeApp {
+  - menu: CoffeeMenu&
+  - service: CoffeeOrderService
+  + run(): void
+}
